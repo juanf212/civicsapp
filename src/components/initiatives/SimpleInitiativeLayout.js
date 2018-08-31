@@ -2,16 +2,18 @@ import React, {Component} from 'react';
 import {
     Stylesheet,
     Text,
-    View
+    View,
+    TouchableHighlight
 } from 'react-native';
 
 export default class SimpleInitiativeLayout extends Component {
 
     render() {
         return(
+            <TouchableHighlight>
             <View>
                 <Text>
-                    Nombre:
+                    Nombre: 
                 </Text>
                 <Text>
                     Ciudad:
@@ -23,6 +25,7 @@ export default class SimpleInitiativeLayout extends Component {
                     ____________________
                 </Text>
             </View>
+            </TouchableHighlight>
         );
 
     }
