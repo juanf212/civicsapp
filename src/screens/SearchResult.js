@@ -14,6 +14,7 @@ export default class SearchResults extends Component {
         <Text style={styles.welcome}>
           Resultados de Búsqueda
         </Text>
+        <FlatList />
         </View>
       );      
     }
