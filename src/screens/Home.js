@@ -42,19 +42,20 @@ export default class Home extends Component {
           alert('calculando distancias')
           console.log(diviceCoords)
           
-          projectsInColombia.map( (project) => {
+          let projectsWithDistace = projectsInColombia.map( (project) => {
             let {coordinates} = JSON.parse(project.position)
             let [longitude, latitude] = coordinates;
-            let distance = this.calculate(diviceCoords, { latitude, longitude})
+            project.distance = this.calculate(diviceCoords, { latitude, longitude})
             
-            if (distance > 5) {
-              return;
-            }
-            
-            console.log(project.name)
-            console.log(project.city.name)
-            console.log('KM:' + distance)
-            console.log("_______________________________")
+            return project
+          })
+
+
+          let closeProjects = projectsWithDistace.filter( project => project.distance < 5 )
+
+
+          this.setState({
+            projects:closeProjects
           })
 
         })
