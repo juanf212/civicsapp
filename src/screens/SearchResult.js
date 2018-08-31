@@ -5,6 +5,8 @@ import {
   View,
   FlatList
 } from 'react-native';
+import Home from './Home';
+import SimpleInitiativeLayout from '../components/initiatives/SimpleInitiativeLayout';
 
 export default class SearchResults extends Component {
 
@@ -14,7 +16,9 @@ export default class SearchResults extends Component {
         <Text style={styles.welcome}>
           Resultados de Búsqueda
         </Text>
-        <FlatList />
+        <FlatList 
+        data = {}
+        renderItem = { ({item}) => <SimpleInitiativeLayout /> } />
         </View>
       );      
     }
