@@ -56,11 +56,12 @@ export default class SearchResults extends Component {
           })
 
 
-          let closeProjects = projectsWithDistace.filter( project => project.distance < 5 )
-
+          let nearByProjects = projectsWithDistace
+            .filter( project => project.distance < 5 )
+            .sort( (a,b) => a.distance - b.distance )
 
           this.setState({
-            projects:closeProjects
+            projects:nearByProjects
           })
 
         })
