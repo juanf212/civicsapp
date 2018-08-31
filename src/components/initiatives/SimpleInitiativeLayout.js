@@ -13,13 +13,13 @@ export default class SimpleInitiativeLayout extends Component {
             <TouchableHighlight>
             <View>
                 <Text>
-                    Nombre: 
+                    Nombre: {this.props.name}
                 </Text>
                 <Text>
-                    Ciudad:
+                    Ciudad: {this.props.city.name}
                 </Text>
                 <Text>
-                    Distancia:
+                    Distancia:{this.props.distance.toFixed(2)} Km
                 </Text>
                 <Text>
                     ____________________
