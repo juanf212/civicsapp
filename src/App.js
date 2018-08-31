@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
   View,
+  Text,
   Button
 } from 'react-native';
 import Home from './screens/Home';
@@ -16,7 +17,7 @@ export default class App extends Component {
   }
 
   loadHomeScreen = () => {
-    this.setState({ screen:true })
+    this.setState({ screen: <Home /> })
   }
 
   loadSearchResultScreen = () => {
@@ -41,11 +42,11 @@ export default class App extends Component {
     return (
 
       <View style={ {flex:1} }>
-        <Button title="Home" />
-        <Button title="SearchResult" />
-        <Button title="Initiative" />
-        <Button title="Favorite" />
-        <Button title="Login" />
+        <Button title='Home' onPress={this.loadHomeScreen} />
+        <Button title='SearchResult' onPress={this.loadSearchResultScreen} />
+        <Button title='Initiative' onPress={this.loadInitiativeScreen} />
+        <Button title='Favorite' onPress={this.loadFavoriteScreen} />
+        <Button title='Login' onPress={this.loadLoginScreen} />
         {this.state.screen}
       </View>
 
