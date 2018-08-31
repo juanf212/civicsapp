@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  Button
 } from 'react-native';
 import CivicsService from '../services/CivicsService';
 
@@ -64,15 +65,18 @@ export default class Home extends Component {
 
   }
 
+  tap=() =>{
+    this.props.resultScreen()
+}
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
           Welcome to Civics App!
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
+        <Button title="Buscar" onPress={ this.tap}/>
+            
       </View>
     );
   }

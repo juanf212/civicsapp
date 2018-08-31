@@ -12,12 +12,14 @@ import Login from './screens/Login';
 
 export default class App extends Component {
 
-  state= {
-    screen: <Home />
+  state= {}
+
+  componentDidMount = () => {
+    this.setState({ screen: <Home    resultScreen={this.loadSearchResultScreen}/> })
   }
 
   loadHomeScreen = () => {
-    this.setState({ screen: <Home /> })
+    this.setState({ screen: <Home    resultScreen={this.loadSearchResultScreen}/> })
   }
 
   loadSearchResultScreen = () => {
