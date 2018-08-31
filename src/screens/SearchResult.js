@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  FlatList
 } from 'react-native';
 
 export default class SearchResults extends Component {
