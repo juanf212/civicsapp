@@ -15,7 +15,7 @@ export default class App extends Component {
   state= {}
 
   componentDidMount = () => {
-    this.setState({ screen: <Home    resultScreen={this.loadSearchResultScreen}/> })
+    this.setState({ screen: <Home    resultScreen={this.loadSearchResultScreen}   /> })
   }
 
   loadHomeScreen = () => {
@@ -24,12 +24,12 @@ export default class App extends Component {
 
   loadSearchResultScreen = () => {
 
-    this.setState({screen: <SearchResult /> })
+    this.setState({screen: <SearchResult initiativeScreen={this.loadInitiativeScreen}/> })
 
   }
 
-  loadInitiativeScreen = () => {
-    this.setState({ screen: <Initiative /> })
+  loadInitiativeScreen = (props) => {
+    this.setState({ screen: <Initiative {...props} /> })
   }
   
   loadLoginScreen = () => {
@@ -45,8 +45,6 @@ export default class App extends Component {
 
       <View style={ {flex:1} }>
         <Button title='Home' onPress={this.loadHomeScreen} />
-        <Button title='SearchResult' onPress={this.loadSearchResultScreen} />
-        <Button title='Initiative' onPress={this.loadInitiativeScreen} />
         <Button title='Favorite' onPress={this.loadFavoriteScreen} />
         <Button title='Login' onPress={this.loadLoginScreen} />
         {this.state.screen}

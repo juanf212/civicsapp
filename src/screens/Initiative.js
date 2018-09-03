@@ -11,7 +11,7 @@ export default class Initiative extends Component {
     return (
       <View style={styles.container}>
       <Text style={styles.welcome}>
-        Esta es Iniciativa
+      {this.props.name}
       </Text>
       </View>
     );      

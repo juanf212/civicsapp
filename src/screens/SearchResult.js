@@ -33,7 +33,7 @@ export default class SearchResults extends Component {
 			<Text style={styles.welcome}>Resultados de Búsqueda</Text>
 			<FlatList 
 				data = { this.state.projects }
-				renderItem = { ({item}) => <SimpleInitiativeLayout {...item}/> }
+				renderItem = { ({item}) => <SimpleInitiativeLayout {...item}   initiativeScreen={this.props.initiativeScreen}/> }
 			/>
         </View>
     );      

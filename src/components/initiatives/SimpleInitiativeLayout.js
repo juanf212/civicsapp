@@ -8,9 +8,16 @@ import {
 
 export default class SimpleInitiativeLayout extends Component {
 
+
+    tap=() =>{
+        
+        this.props.initiativeScreen(this.props)
+    }
+
+
     render() {
         return(
-            <TouchableHighlight>
+            <TouchableHighlight onPress={this.tap}>
             <View>
                 <Text>
                     Nombre: {this.props.name}
