@@ -10,9 +10,18 @@ export default class Initiative extends Component {
   render() {
     return (
       <View style={styles.container}>
-      <Text style={styles.welcome}>
-      {this.props.name}
-      </Text>
+      <Text>
+                    Nombre: {this.props.name}
+                </Text>
+                <Text>
+                    Ciudad: {this.props.city.name}
+                </Text>
+                <Text>
+                    Distancia:{this.props.distance.toFixed(2)} Km
+                </Text>
+                <Text>
+                    ____________________
+                </Text>
       </View>
     );      
   }
