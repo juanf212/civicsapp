@@ -37,7 +37,7 @@ export default class App extends Component {
   }
 
   loadFavoriteScreen = () => {
-    this.setState({ screen: <Favorite /> })
+    this.setState({ screen: <Favorite initiativeScreen={this.loadInitiativeScreen} /> })
   }
 
   render() {

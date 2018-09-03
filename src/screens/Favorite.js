@@ -7,6 +7,8 @@ import {
   FlatList,
 } from 'react-native';
 
+import SimpleInitiativeLayout from '../components/initiatives/SimpleInitiativeLayout';
+
 export default class Favorite extends Component {
   state = {
     favorites: []
@@ -28,7 +30,7 @@ export default class Favorite extends Component {
       <FlatList 
         data = { this.state.favorites }
         extraData = { (data, index) => index.toString() }
-        renderItem = { ({item}) => <Text> { item.name } </Text> }
+        renderItem = { ({item}) => <SimpleInitiativeLayout {...item} initiativeScreen={this.props.initiativeScreen}/> }
       />
       </View>
     );      
