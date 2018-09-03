@@ -34,7 +34,7 @@ export default class SearchResults extends Component {
 			<FlatList 
 				data = { this.state.projects }
 				renderItem = { ({item}) => <SimpleInitiativeLayout {...item}   initiativeScreen={this.props.initiativeScreen}/> }
-			/>
+			keyExtractor={(item, index) => index.toString()}/>
         </View>
     );      
   }
