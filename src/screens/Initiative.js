@@ -2,10 +2,23 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  AsyncStorage,
+  Button
 } from 'react-native';
 
 export default class Initiative extends Component {
+  markLike = async () => {
+    let value = await AsyncStorage.getItem('favorites');
+    
+    if (!value) {
+      value = "[]"
+    }
+    value = JSON.parse(value)
+    value.push(this.props)
+
+    await AsyncStorage.setItem('favorites', JSON.stringify(value));
+  }
 
   render() {
     return (
@@ -19,9 +32,7 @@ export default class Initiative extends Component {
                 <Text>
                     Distancia:{this.props.distance.toFixed(2)} Km
                 </Text>
-                <Text>
-                    ____________________
-                </Text>
+                <Button title="Save" onPress={this.markLike}  />
       </View>
     );      
   }

@@ -2,10 +2,22 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  AsyncStorage,
+  FlatList,
 } from 'react-native';
 
 export default class Favorite extends Component {
+  state = {
+    favorites: []
+  }
+
+  componentDidMount = async () => {
+    let favorites = await AsyncStorage.getItem('favorites');
+    favorites = JSON.parse(favorites)
+  
+    this.setState({ favorites })
+  }
 
   render() {
     return (
@@ -13,6 +25,11 @@ export default class Favorite extends Component {
       <Text style={styles.welcome}>
         Favoritos
       </Text>
+      <FlatList 
+        data = { this.state.favorites }
+        extraData = { (data, index) => index.toString() }
+        renderItem = { ({item}) => <Text> { item.name } </Text> }
+      />
       </View>
     );      
   }
