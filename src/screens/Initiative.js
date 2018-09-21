@@ -6,19 +6,31 @@ import {
   AsyncStorage,
   Button
 } from 'react-native';
+import CivicsService from '../services/CivicsService'
 
 export default class Initiative extends Component {
+
+  state = {
+    des: '',
+    add: ''
+  }
+
+  componentDidMount = () => {
+    const civic = new CivicsService()
+    civic.initiative(this.props.pk, ({ des, add }) => {
+      this.setState({ des, add })
+    })
+  }
+
   markLike = async () => {
     let value = await AsyncStorage.getItem('favorites');
-    
+
     if (!value) {
       value = "[]"
     }
     value = JSON.parse(value)
 
-    console.log(value)
-
-    if(value.some(initiative => initiative.pk == this.props.pk )) {
+    if (value.some(initiative => initiative.pk == this.props.pk)) {
       return alert('Ya esta guardado en favoritos')
     }
 
@@ -30,18 +42,24 @@ export default class Initiative extends Component {
   render() {
     return (
       <View style={styles.container}>
-      <Text>
-                    Nombre: {this.props.name}
+        <Text>
+          Nombre: {this.props.name}
+        </Text>
+        <Text>
+          Direccion: {this.state.add}
+        </Text>
+        <Text>
+          Ciudad: {this.props.city.name}
+        </Text>
+        <Text>
+          Distancia:{this.props.distance.toFixed(2)} Km
                 </Text>
-                <Text>
-                    Ciudad: {this.props.city.name}
-                </Text>
-                <Text>
-                    Distancia:{this.props.distance.toFixed(2)} Km
-                </Text>
-                <Button title="Save" onPress={this.markLike}  />
+        <Text>
+          Descripcion: {this.state.des}
+        </Text>
+        <Button title="Save" onPress={this.markLike} />
       </View>
-    );      
+    );
   }
 }
 
