@@ -15,6 +15,13 @@ export default class Initiative extends Component {
       value = "[]"
     }
     value = JSON.parse(value)
+
+    console.log(value)
+
+    if(value.some(initiative => initiative.pk == this.props.pk )) {
+      return alert('Ya esta guardado en favoritos')
+    }
+
     value.push(this.props)
 
     await AsyncStorage.setItem('favorites', JSON.stringify(value));
