@@ -41,6 +41,15 @@ export default class CivicsService {
             })
     }
 
+    initiative = (id, callback) => {
+        let url = `http://civics.cc/api/initiative?id=${id}`
+        fetch(url)
+            .then(request => request.json())
+            .then(data => {
+                callback(data)
+            })
+    }
+
     cities = (callback) => {
         let url = `https://civics.cc/api/cities_with_initiatives`
         fetch(url)
