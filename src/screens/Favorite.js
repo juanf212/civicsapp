@@ -8,7 +8,7 @@ import {
   Button,
   Alert
 } from 'react-native';
-
+import PlaceholderList from '../components/helpers/PlaceholderList'
 import SimpleInitiativeLayout from '../components/initiatives/SimpleInitiativeLayout';
 
 export default class Favorite extends Component {
@@ -64,6 +64,7 @@ export default class Favorite extends Component {
         data = { this.state.favorites }
         keyExtractor = { (data, index) => index.toString() }
         renderItem = { this.favoriteLayout }
+        ListEmptyComponent = { () => <PlaceholderList message="Aun no tienes favoritos" /> }
       />
       </View>
     );      
