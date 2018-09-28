@@ -6,6 +6,7 @@ import {
   AsyncStorage,
   FlatList,
   Button,
+  Alert
 } from 'react-native';
 
 import SimpleInitiativeLayout from '../components/initiatives/SimpleInitiativeLayout';
@@ -22,12 +23,22 @@ export default class Favorite extends Component {
     this.setState({ favorites })
   }
 
-  	delete = async (id) => {
-		let favorites = this.state.favorites.filter( ({pk}) => pk!=id )
-		
-		await AsyncStorage.setItem('favorites', JSON.stringify(favorites))
-
-		this.setState({ favorites })
+  delete = (id) => {
+    
+    Alert.alert(
+      'Alerta de confirmación',
+      '¿Estás seguro que deseas eliminar la iniciativa de favoritos?',
+      [
+        {text: 'Ok', onPress: async () => {
+          let favorites = this.state.favorites.filter( ({pk}) => pk!=id )
+          
+		      await AsyncStorage.setItem('favorites', JSON.stringify(favorites))
+          
+          this.setState({ favorites })
+        }},
+        {text: 'Cancelar', onPress: () => {} }
+      ]
+    )
 	}
 
   favoriteLayout = ({item}) => {
