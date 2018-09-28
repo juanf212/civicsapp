@@ -34,6 +34,8 @@ export default class Initiative extends Component {
       return alert('Ya esta guardado en favoritos')
     }
 
+    alert('Se ha guardado exitosamente')
+
     value.push(this.props)
 
     await AsyncStorage.setItem('favorites', JSON.stringify(value));
