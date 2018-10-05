@@ -3,7 +3,8 @@ import {
   StyleSheet,
   Text,
   View,
-  FlatList
+  FlatList,
+  ActivityIndicator
 } from 'react-native';
 import Home from './Home';
 import SimpleInitiativeLayout from '../components/initiatives/SimpleInitiativeLayout';
@@ -45,7 +46,9 @@ export default class SearchResults extends Component {
         <FlatList
           data={this.state.projects}
           renderItem={({ item }) => <SimpleInitiativeLayout {...item} initiativeScreen={this.props.initiativeScreen} />}
-          keyExtractor={(item, index) => index.toString()} />
+          keyExtractor={(item, index) => index.toString()} 
+          ListEmptyComponent = { () => <ActivityIndicator size="large" color="#0000ff" /> }  
+        />
       </View>
     );
   }
