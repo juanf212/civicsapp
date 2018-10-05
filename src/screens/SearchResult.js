@@ -18,27 +18,38 @@ export default class SearchResults extends Component {
 
   componentDidMount = () => {
     const geolocation = new GeolocationService()
-    
-    geolocation.getCoords((diviceCoords) => {
-    	const civic = new CivicsService()
 
-    	civic.getNearbyProjects( diviceCoords, 5, (projects) => {
-        	this.setState({ projects })
-    	})
+    if (this.props.getInitiatives().length) {
+     
+      return this.setState({ projects: this.props.getInitiatives() })
+      
+    }
+
+    geolocation.getCoords((diviceCoords) => {
+      const civic = new CivicsService()
+
+      civic.getNearbyProjects(diviceCoords, 5, (projects) => {
+        this.setState({ projects })
+        this.props.setInitiatives(projects)
+
+      })
     })
+
+
+
   }
   render() {
-	return (
-    	<View style={styles.container}>
-			<Text style={styles.welcome}>Resultados de Búsqueda</Text>
-			<FlatList 
-				data = { this.state.projects }
-				renderItem = { ({item}) => <SimpleInitiativeLayout {...item}   initiativeScreen={this.props.initiativeScreen}/> }
-			keyExtractor={(item, index) => index.toString()}/>
-        </View>
-    );      
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>Resultados de Búsqueda</Text>
+        <FlatList
+          data={this.state.projects}
+          renderItem={({ item }) => <SimpleInitiativeLayout {...item} initiativeScreen={this.props.initiativeScreen} />}
+          keyExtractor={(item, index) => index.toString()} />
+      </View>
+    );
   }
-} 
+}
 
 const styles = StyleSheet.create({
   container: {

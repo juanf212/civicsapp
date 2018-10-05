@@ -12,10 +12,28 @@ import Login from './screens/Login';
 
 export default class App extends Component {
 
-  state= {}
+  state= {
+
+    initiatives:[]
+
+
+  }
 
   componentDidMount = () => {
     this.setState({ screen: <Home    resultScreen={this.loadSearchResultScreen}   /> })
+  }
+
+  getInitiatives=()=>{
+    
+    return this.state.initiatives 
+
+  }
+
+  setInitiatives=(initiatives)=>{
+
+    this.setState({initiatives}) 
+  
+  
   }
 
   loadHomeScreen = () => {
@@ -24,7 +42,7 @@ export default class App extends Component {
 
   loadSearchResultScreen = () => {
 
-    this.setState({screen: <SearchResult initiativeScreen={this.loadInitiativeScreen}/> })
+    this.setState({screen: <SearchResult initiativeScreen={this.loadInitiativeScreen}   getInitiatives={this.getInitiatives}  setInitiatives={this.setInitiatives}/> })
 
   }
 
